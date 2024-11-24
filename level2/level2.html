@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Level2</title>
+</head>
+<style>
+    body {
+        background-image: url('../images/level1-background.avif');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    #healthDisplay {
+        position: absolute;
+        top: 400px;
+        left: 200px;
+        font-size: 24px;
+        font-family: 'Uncial Antiqua', cursive;
+        color: #ac0101;
+    }
+
+    h1 {
+        color: #ac0101;
+        font-size: 55px;
+        font-family: 'Uncial Antiqua', cursive;
+        margin-bottom: 10px;
+    }
+    canvas {
+        border: 1px solid #000;
+    }
+</style>
+<body>
+    <h1>SURVIVE!</h1>
+    <h4 id="healthDisplay">Health: 100</h4>
+    <canvas style="" width="960" height="640" id="level2">
+    </canvas>
+    <script type="module" src="level2.js"></script>
+</body>
+</html>
