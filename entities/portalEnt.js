@@ -33,8 +33,8 @@ export class PortalEnt extends Entity {
         for (let i = 0; i < this.size_x; i++) {
             for (let j = 0; j < this.size_y; j++) {
                 tiles.push({
-                    x: this.pos_x + i,
-                    y: this.pos_y + j
+                    x: this.pos_x + i - 30,
+                    y: this.pos_y + j - 30
                 });
             }
         }

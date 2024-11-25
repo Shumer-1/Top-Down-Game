@@ -1,12 +1,30 @@
 export class PhysicManager {
-    constructor(mapManager) {
+    constructor(mapManager, level) {
         this.mapManager = mapManager;
-        this.objects = []  // Массив объектов UsualObject
+        this.objects = [];
+        this.level = level;
     }
 
     isPassable(x, y) {
         x+=30;
         y+=30;
+
+        let maxY;
+        let maxX;
+
+        if (this.level === 1){
+            maxX = 800;
+            maxY = 800;
+        }
+        else{
+            maxX = 960;
+            maxY = 640;
+        }
+
+        if (x < -1 || y < -1 || x > maxX || y > maxY) {
+            return false;
+        }
+
 
         if (!this.mapManager.isTilePassable(x, y)) {
             return false;

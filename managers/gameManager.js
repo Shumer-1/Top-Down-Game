@@ -13,7 +13,7 @@ export class GameManager {
         this.enemies = enemies || [];
         this.soundManager = soundManager;
         this.mapManager = new MapManager();
-        this.physicManager = new PhysicManager(this.mapManager);
+        this.physicManager = new PhysicManager(this.mapManager, level);
         this.player = player;
         this.lastUpdateTime = 0;
         this.frameRate = 60;
@@ -69,6 +69,7 @@ export class GameManager {
                     this.updateGame(deltaTime);
                     if (!this.isGameInitialized) {
                         return;
+
                     }
                     this.renderGame();
                     this.lastUpdateTime = timestamp;
@@ -89,6 +90,7 @@ export class GameManager {
             window.location.href = "../level2/level2.html";
             return;
         }
+
         if (player.endGame === true){
             localStorage.setItem('level2Time', new Date() - this.startTime);
             window.location.href = "../liderBoard/liderBoard.html";
@@ -98,6 +100,7 @@ export class GameManager {
 
         if (this.player.lifetime <= 0) {
             this.endGame("Game Over! You died.");
+            setTimeout(() => window.location.href = "../start/start.html", 2000)
             return;
         }
 
@@ -105,7 +108,7 @@ export class GameManager {
 
         this.enemies.forEach(enemy => {
             if (enemy.lifeFlag) {
-                enemy.update(this.player, this.physicManager);
+                enemy.update(this.player, this.physicManager, this.soundManager);
             }
         });
 

@@ -4,13 +4,13 @@ import {SpriteManager} from "../managers/spriteManager.js";
 let radius = 200;
 
 let enemy = Entity.extend({
-    lifetime: 100,
+    lifetime: 10,
     move_x: 0,
     move_y: 0,
     pos_x: 500,
     pos_y: 100,
     speed: 0.5,
-    health: 100,
+    health: 10,
     isAttacking: false,
     isDamaged: false,
     damageDirection: 0,
@@ -72,7 +72,7 @@ enemy.die = function () {
     this.lifeFlag = false;
 };
 
-enemy.update = function (player, physicManager) {
+enemy.update = function (player, physicManager, soundManager) {
     let dx = player.pos_x - this.pos_x;
     let dy = player.pos_y - this.pos_y;
     let distance = Math.sqrt(dx * dx + dy * dy);
@@ -95,6 +95,7 @@ enemy.update = function (player, physicManager) {
             this.isAttacking = false;
         }
         else if (distance <= 10 && !this.isAttacking) {
+            soundManager.playEnemyMusic();
             player.lifetime -= 10;
             this.isAttacking = true;
 

@@ -5,6 +5,7 @@ export class EventManager {
         this.soundManager = soundManager;
         this.healObj = healObj;
         this.speedObj = speedObj;
+        this.count = 0;
     }
 
     initialize() {
@@ -13,7 +14,7 @@ export class EventManager {
     }
 
     handleKeyDown(event) {
-        this.soundManager.playBackgroundMusic();
+        //this.soundManager.playBackgroundMusic();
         switch (event.key) {
             case 'ArrowUp':
                 this.player.move_y = -1;
@@ -28,6 +29,8 @@ export class EventManager {
                 this.player.move_x = 1;
                 break;
             case ' ':
+                this.count++;
+                console.log(this.count);
                 this.player.attack(this.enemies, this.speedObj, this.healObj);
                 this.soundManager.playAttackMusic();
                 break;

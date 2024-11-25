@@ -1,19 +1,22 @@
 const level1Time = localStorage.getItem("level1Time");
 const level2Time = localStorage.getItem("level2Time");
 
-const time = (level1Time && level2Time) ? parseFloat(level1Time) + parseFloat(level2Time) : -10;
+const time = (level1Time && level2Time) ? parseFloat(level1Time) + parseFloat(level2Time) : null;
 
 if (localStorage.getItem('table') === null) {
     localStorage.setItem("table", JSON.stringify([]));
 }
 
 let table = JSON.parse(localStorage.getItem("table"));
+if (time !== null){
+    table.push({time: time, name: name});
+    table.sort((a, b) => a.time - b.time);
+}
 
-table.push({time: time, name: name});
-table.sort((a, b) => a.time - b.time);
 
 localStorage.setItem("table", JSON.stringify(table));
-
+localStorage.removeItem("level1Time");
+localStorage.removeItem("level2Time");
 
 function loadLeaderboard() {
     let table = JSON.parse(localStorage.getItem("table")) || [];
@@ -31,6 +34,12 @@ function loadLeaderboard() {
         li.textContent = `${index + 1}. ${entry.name} - ${entry.time/1000}s`;
         leaderboardElement.appendChild(li);
     });
+
 }
 
 window.onload = loadLeaderboard;
+
+
+function goToStart(){
+    window.location.href = "../start/start.html"
+}

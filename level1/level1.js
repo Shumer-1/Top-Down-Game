@@ -4,8 +4,7 @@ import { GameManager } from '../managers/gameManager.js';
 import { SoundManager } from '../managers/soundManager.js';
 
 const canvas = document.getElementById('level1');
-let startTime = new Date();
-const soundManager = new SoundManager('../audio/lev1.mp3', '../audio/att.mp3');
+const soundManager = new SoundManager('../audio/lev1.mp3', '../audio/att.mp3', '../audio/enemy.mp3');
 
 // Создаём врагов
 let enemies = [
